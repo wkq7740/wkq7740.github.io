@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>图片处理 | Makisang&#39;s 笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.e4d8b86b.css" as="style"><link rel="preload" href="/assets/js/app.9c1f9d80.js" as="script"><link rel="preload" href="/assets/js/2.df9354d1.js" as="script"><link rel="preload" href="/assets/js/13.4e78fca2.js" as="script"><link rel="prefetch" href="/assets/js/10.3ce49829.js"><link rel="prefetch" href="/assets/js/11.357bf206.js"><link rel="prefetch" href="/assets/js/12.6391de8b.js"><link rel="prefetch" href="/assets/js/14.3989fbd3.js"><link rel="prefetch" href="/assets/js/15.09142e66.js"><link rel="prefetch" href="/assets/js/16.e9694145.js"><link rel="prefetch" href="/assets/js/17.0167676d.js"><link rel="prefetch" href="/assets/js/18.02eaf6af.js"><link rel="prefetch" href="/assets/js/3.fea2f0c6.js"><link rel="prefetch" href="/assets/js/4.05f254cc.js"><link rel="prefetch" href="/assets/js/5.bd94ded6.js"><link rel="prefetch" href="/assets/js/6.c5f5f561.js"><link rel="prefetch" href="/assets/js/7.7842ae5c.js"><link rel="prefetch" href="/assets/js/8.f871b5f1.js"><link rel="prefetch" href="/assets/js/9.ae153530.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e4d8b86b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Makisang's 笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>webpack</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/webpack/introduction.html" class="sidebar-link">基本介绍</a></li><li><a href="/webpack/resolve.html" class="sidebar-link">resolve</a></li><li><a href="/webpack/css-loader.html" class="sidebar-link">样式处理</a></li><li><a href="/webpack/handle-img.html" aria-current="page" class="active sidebar-link">图片处理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack/handle-img.html#file-loader" class="sidebar-link">file-loader</a></li><li class="sidebar-sub-header"><a href="/webpack/handle-img.html#url-loader" class="sidebar-link">url-loader</a></li><li class="sidebar-sub-header"><a href="/webpack/handle-img.html#asset" class="sidebar-link">asset</a></li><li class="sidebar-sub-header"><a href="/webpack/handle-img.html#asset-处理图标字体" class="sidebar-link">asset 处理图标字体</a></li></ul></li><li><a href="/webpack/plugins.html" class="sidebar-link">webpack 中的插件</a></li><li><a href="/webpack/babel.html" class="sidebar-link">babel 使用</a></li><li><a href="/webpack/webpack-dev-server.html" class="sidebar-link">webpack-dev-server</a></li><li><a href="/webpack/react.html" class="sidebar-link">配置 React</a></li><li><a href="/webpack/env.html" class="sidebar-link">环境配置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="图片处理"><a href="#图片处理" class="header-anchor">#</a> 图片处理</h1> <h2 id="file-loader"><a href="#file-loader" class="header-anchor">#</a> file-loader</h2> <p>将图片打包拷贝到指定位置</p> <h2 id="url-loader"><a href="#url-loader" class="header-anchor">#</a> url-loader</h2> <p>默认将图片解析成 <code>base64</code> 格式，插入打包的 <code>js</code> 代码中。</p> <p>或者也可以通过设置 <code>limit</code> 属性，将超过一定大小的图片使用 <code>file-loader</code> 来处理。</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br></div><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|svg|gif|jpe?g)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    use<span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+            loader<span class="token operator">:</span> <span class="token string">&quot;url-loader&quot;</span><span class="token punctuation">,</span>
+            limit<span class="token operator">:</span> <span class="token number">20</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="asset"><a href="#asset" class="header-anchor">#</a> asset</h2> <p><code>webpack5</code> 新增</p> <table><thead><tr><th>配置</th> <th style="text-align:center;">所用功能</th></tr></thead> <tbody><tr><td>asset/resource</td> <td style="text-align:center;">file-loader</td></tr> <tr><td>asset/inline</td> <td style="text-align:center;">url-loader</td></tr> <tr><td>asset/source</td> <td style="text-align:center;">raw-loader</td></tr> <tr><td>asset</td> <td style="text-align:center;">通过 options 灵活配置</td></tr></tbody></table> <p><strong>相关配置</strong></p> <p><code>modules.exports.output.assetModuleFilename</code></p> <p>统一设置 <code>asset</code> 打包处理的文件的输出路径和名称，比较少用，一般是各模块中分开配置</p> <p><code>generator</code></p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br></div><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|svg|gif|jpe?g)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'asset/resource'</span><span class="token punctuation">,</span>
+    generator<span class="token operator">:</span> <span class="token punctuation">{</span>
+        filename<span class="token operator">:</span> <span class="token string">&quot;img/[name].[hash:4][ext]&quot;</span><span class="token punctuation">,</span>   <span class="token comment">// [ext] 之前不需要.</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>Example (file-loader + url-loader)</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|svg|gif|jpe?g)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'asset'</span><span class="token punctuation">,</span>
+    generator<span class="token operator">:</span> <span class="token punctuation">{</span>
+        filename<span class="token operator">:</span> <span class="token string">&quot;img/[name].[hash:4][ext]&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    parser<span class="token operator">:</span> <span class="token punctuation">{</span>
+        dataUrlCondition<span class="token operator">:</span> <span class="token punctuation">{</span>
+            maxSize<span class="token operator">:</span> <span class="token number">20</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="asset-处理图标字体"><a href="#asset-处理图标字体" class="header-anchor">#</a> asset 处理图标字体</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(ttf|woff2?)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'asset/resource'</span><span class="token punctuation">,</span>
+    generator<span class="token operator">:</span> <span class="token punctuation">{</span>
+        filename<span class="token operator">:</span> <span class="token string">&quot;font/[name].[hash:4][ext]&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/webpack/css-loader.html" class="prev">
+        样式处理
+      </a></span> <span class="next"><a href="/webpack/plugins.html">
+        webpack 中的插件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9c1f9d80.js" defer></script><script src="/assets/js/2.df9354d1.js" defer></script><script src="/assets/js/13.4e78fca2.js" defer></script>
+  </body>
+</html>

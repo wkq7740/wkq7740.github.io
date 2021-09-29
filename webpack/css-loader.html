@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>样式处理 | Makisang&#39;s 笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.e4d8b86b.css" as="style"><link rel="preload" href="/assets/js/app.9c1f9d80.js" as="script"><link rel="preload" href="/assets/js/2.df9354d1.js" as="script"><link rel="preload" href="/assets/js/11.357bf206.js" as="script"><link rel="prefetch" href="/assets/js/10.3ce49829.js"><link rel="prefetch" href="/assets/js/12.6391de8b.js"><link rel="prefetch" href="/assets/js/13.4e78fca2.js"><link rel="prefetch" href="/assets/js/14.3989fbd3.js"><link rel="prefetch" href="/assets/js/15.09142e66.js"><link rel="prefetch" href="/assets/js/16.e9694145.js"><link rel="prefetch" href="/assets/js/17.0167676d.js"><link rel="prefetch" href="/assets/js/18.02eaf6af.js"><link rel="prefetch" href="/assets/js/3.fea2f0c6.js"><link rel="prefetch" href="/assets/js/4.05f254cc.js"><link rel="prefetch" href="/assets/js/5.bd94ded6.js"><link rel="prefetch" href="/assets/js/6.c5f5f561.js"><link rel="prefetch" href="/assets/js/7.7842ae5c.js"><link rel="prefetch" href="/assets/js/8.f871b5f1.js"><link rel="prefetch" href="/assets/js/9.ae153530.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e4d8b86b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Makisang's 笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>webpack</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/webpack/introduction.html" class="sidebar-link">基本介绍</a></li><li><a href="/webpack/resolve.html" class="sidebar-link">resolve</a></li><li><a href="/webpack/css-loader.html" aria-current="page" class="active sidebar-link">样式处理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack/css-loader.html#postcss" class="sidebar-link">postcss</a></li><li class="sidebar-sub-header"><a href="/webpack/css-loader.html#plugin-配置文件化" class="sidebar-link">plugin 配置文件化</a></li><li class="sidebar-sub-header"><a href="/webpack/css-loader.html#importloaders" class="sidebar-link">importLoaders</a></li></ul></li><li><a href="/webpack/handle-img.html" class="sidebar-link">图片处理</a></li><li><a href="/webpack/plugins.html" class="sidebar-link">webpack 中的插件</a></li><li><a href="/webpack/babel.html" class="sidebar-link">babel 使用</a></li><li><a href="/webpack/webpack-dev-server.html" class="sidebar-link">webpack-dev-server</a></li><li><a href="/webpack/react.html" class="sidebar-link">配置 React</a></li><li><a href="/webpack/env.html" class="sidebar-link">环境配置</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="样式处理"><a href="#样式处理" class="header-anchor">#</a> 样式处理</h1> <h2 id="postcss"><a href="#postcss" class="header-anchor">#</a> postcss</h2> <p><strong>用途</strong></p> <p><em>帮助我们使用 javascript 来转换样式，如适配浏览器前缀</em></p> <p><strong>依赖</strong></p> <p><code>browserslist</code> <code>autoprefixer</code></p> <p><strong>命令行示例</strong></p> <p><code>npx postcss --use autoprefixer -o out.css ./css/exmaple.css</code></p> <p><strong>在 webpack 中使用</strong></p> <p>通过 <code>postcss-loader</code>， 结合插件来使用。例如 <code>autoprefixer</code>，这个插件可以根据 <code>browserslist</code> 获取的浏览器适配列表，为样式加上前缀。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    use<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+        loader<span class="token operator">:</span> <span class="token string">&quot;postcss-loader&quot;</span><span class="token punctuation">,</span>
+        options<span class="token operator">:</span> <span class="token punctuation">{</span>
+            postcssOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+            plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;autoprefixer&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;postcss-preset-env&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><em>postcss-preset-env</em></p> <p>插件集合，包含更多常见功能，例如将 <code>#12345678</code> 转化为 <code>rgba(18,52,86,0.47059)</code>，其中也包含 <code>autoprefixer</code></p></div> <h2 id="plugin-配置文件化"><a href="#plugin-配置文件化" class="header-anchor">#</a> plugin 配置文件化</h2> <p>以上面的postcss-loader为例，可以在项目目录下新建一个 <code>postcss.config.js</code> 文件，用来指定 <code>postcss-loader</code> 使用到的插件</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;postcss-preset-env&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>然后 <code>webpack.config.js</code> 中的配置就可以简化成：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token operator">:</span> <span class="token string">&quot;./src/index.js&quot;</span><span class="token punctuation">,</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">&quot;main.js&quot;</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;dist&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;postcss-loader&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.less$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;postcss-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;less-loader&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre></div><h2 id="importloaders"><a href="#importloaders" class="header-anchor">#</a> importLoaders</h2> <p>假设有如下两个css文件</p> <p><code>login.css</code></p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@import</span> <span class="token string">&quot;./test.css&quot;</span><span class="token punctuation">;</span></span>
+
+<span class="token selector">.title</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #12345678<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>test.css</code></p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.title</span> <span class="token punctuation">{</span>
+  <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> all 0.5s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那么在webpack打包时，<code>test.css</code> 中的样式没有被预处理，这是因为 <code>postcss-loader</code> 没有处理 import 语句的功能，
+所以它只能处理 <code>login.css</code> 中原有的样式，
+<code>@import &quot;./test.css&quot;;</code> 则是交给了 <code>css-loader</code> 来处理，
+<code>css-loader</code> 引入 <code>test.css</code> 后，已经无法反向让 <code>post-loader</code> 处理其中的样式了。</p> <p>为了解决这个问题，需要用到 <code>importLoaders</code> 属性</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token operator">:</span> <span class="token string">&quot;./src/index.js&quot;</span><span class="token punctuation">,</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">&quot;main.js&quot;</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;dist&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            loader<span class="token operator">:</span> <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span>
+            options<span class="token operator">:</span> <span class="token punctuation">{</span>
+              importLoaders<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token string">&quot;postcss-loader&quot;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.less$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;postcss-loader&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;less-loader&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p><code>css-loader</code> 中的 <code>importLoaders</code> 设为1，可以在 import 文件之后，反向回溯1个 loader，让其先处理，再回到 <code>css-loader</code>。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/webpack/resolve.html" class="prev">
+        resolve
+      </a></span> <span class="next"><a href="/webpack/handle-img.html">
+        图片处理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9c1f9d80.js" defer></script><script src="/assets/js/2.df9354d1.js" defer></script><script src="/assets/js/11.357bf206.js" defer></script>
+  </body>
+</html>
